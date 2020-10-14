@@ -39,19 +39,24 @@ d3.csv("data/data.csv").then(function(data) {
 
     // Add dots
     var dots = svg.append('g')
-                    .selectAll("dot")
+                    .selectAll(null)
                     .data(data)
                     .enter()
                     .append("circle")
                     .attr("class", "dot")
                     .attr("cx", function (d) { return x(d.income); } )
                     .attr("cy", function (d) { return y(d.obesity); } )
-                    .attr("r", 10)
-                    .style("fill", "#ffcc33");
+                    .attr("r", 15)
+                    .style("fill", "#BF396A");
 
-    dots.append("text")
-        .text(function(d) { return d.abbr; })
-        .attr("x", function(d) { return x(d.income); })
-        .attr("y", function (d) { return y(d.obesity); });
+    var abbr = svg.append('g')
+                .selectAll(null)
+                .data(data)
+                .enter()
+                .append("text")
+                .attr("class", "stateText")
+                .attr("x", function (d) { return x(d.income); } )
+                .attr("y", function (d) { return y(d.obesity); } )
+                .text( d => d.abbr );
 
 });
