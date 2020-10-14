@@ -7,8 +7,8 @@ d3.csv("data/data.csv").then(function(data) {
 
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 660 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    width = 680 - margin.left - margin.right,
+    height = 440 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
     var svg = d3.select("#scatter")
@@ -24,13 +24,13 @@ d3.csv("data/data.csv").then(function(data) {
     .domain([30000, 80000])
     .range([ 0, width ]);
     svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + (height-5) + ")")
     .call(d3.axisBottom(x));
 
     // Add Y axis
     var y = d3.scaleLinear()
     .domain([0, 45])
-    .range([ height, 0]);
+    .range([(height-5), 0]);
     svg.append("g")
     .call(d3.axisLeft(y));
 
@@ -63,11 +63,11 @@ d3.csv("data/data.csv").then(function(data) {
                       .attr("x", 0 - (height / 2))
                       .attr("dy", "1em")
                       .attr("class", "axisText")
-                      .text("Obesity");
+                      .text("Obesity (%)");
   
     var xLabel = svg.append("text")
-                      .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
+                      .attr("transform", `translate(${width / 2 - 50}, ${height + margin.top + 19})`)
                       .attr("class", "axisText")
-                      .text("Income");
+                      .text("Income ($)");
 
 });
