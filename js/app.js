@@ -21,7 +21,7 @@ d3.csv("data/data.csv").then(function(data) {
 
     // Add X axis
     var x = d3.scaleLinear()
-    .domain([30000, 80000])
+    .domain([35000, 80000])
     .range([ 0, width ]);
     svg.append("g")
     .attr("transform", "translate(0," + (height-5) + ")")
@@ -29,7 +29,7 @@ d3.csv("data/data.csv").then(function(data) {
 
     // Add Y axis
     var y = d3.scaleLinear()
-    .domain([0, 45])
+    .domain([18, 40])
     .range([(height-5), 0]);
     svg.append("g")
     .call(d3.axisLeft(y));
