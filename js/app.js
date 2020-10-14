@@ -1,12 +1,9 @@
-// @TODO: YOUR CODE HERE!
-
 d3.csv("data/data.csv").then(function(data) {
 
     console.log(data);
 
     //create a scatter plot between two of the data 
-    //variables such as Healthcare vs. Poverty or Smokers vs. Age.
-    // income vs. obesity
+    //variables such as income vs. obesity
 
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 30, left: 60},
@@ -58,5 +55,19 @@ d3.csv("data/data.csv").then(function(data) {
                 .attr("x", function (d) { return x(d.income); } )
                 .attr("y", function (d) { return y(d.obesity); } )
                 .text( d => d.abbr );
+
+        // Create axes labels
+    var yLabel = svg.append("text")
+                      .attr("transform", "rotate(-90)")
+                      .attr("y", 0 - margin.left + 10)
+                      .attr("x", 0 - (height / 2))
+                      .attr("dy", "1em")
+                      .attr("class", "axisText")
+                      .text("Obesity");
+  
+    var xLabel = svg.append("text")
+                      .attr("transform", `translate(${width / 2}, ${height + margin.top + 20})`)
+                      .attr("class", "axisText")
+                      .text("Income");
 
 });
